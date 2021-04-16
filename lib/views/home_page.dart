@@ -57,7 +57,7 @@ class HomeContent extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text("Welcome to RechTUM!", style: Theme.of(context).textTheme.headline5),
+                  Text("Welcome to RechTUM!", style: Theme.of(context).textTheme.headline5?.copyWith(fontWeight: FontWeight.bold)),
                   Text("Here you will be able to find answers to all your university related legal questions.")
                 ],
               ),

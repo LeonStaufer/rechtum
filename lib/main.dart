@@ -19,8 +19,8 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final ThemeData theme = ThemeData(
+      fontFamily: "IBM Plex Sans",
       primarySwatch: createMaterialColor(Color(0xff0065bd)),
-      textTheme: Typography.material2018().black,
     );
 
     return MaterialApp(
