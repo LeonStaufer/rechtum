@@ -1,4 +1,5 @@
 import 'package:openai_gpt3_api/openai_gpt3_api.dart';
+import 'package:rechtum/services/authentication.dart';
 import 'package:rechtum/view_models/base_model.dart';
 import 'package:rechtum/models/message.dart';
 import 'package:rechtum/services/locator.dart';
@@ -11,6 +12,8 @@ class ChatViewModel extends BaseModel {
 
   final Logger _logger = locator.get<Logger>();
   final GPT3 _gpt3 = locator.get<GPT3>();
+  final AuthenticationService _authService =
+      locator.get<AuthenticationService>();
   List<Message> _messages = <Message>[];
 
   static const prompt = """
@@ -21,7 +24,7 @@ class ChatViewModel extends BaseModel {
     text = text.trim();
     if (text.isEmpty) return;
 
-    _messages.add(Message(text: text, author: "User"));
+    _messages.add(Message(text: text, author: _authService.current.username));
     setStatus(Status.IDLE);
 
     var answer =

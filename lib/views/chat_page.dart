@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:provider/provider.dart';
 import 'package:rechtum/models/message.dart';
+import 'package:rechtum/view_models/auth_view_model.dart';
 import 'package:rechtum/view_models/chat_view_model.dart';
 
 class ChatPage extends StatelessWidget {
@@ -10,7 +11,7 @@ class ChatPage extends StatelessWidget {
   Widget build(BuildContext context) {
     ChatViewModel viewModel = context.watch<ChatViewModel>();
     return Scaffold(
-      appBar: AppBar(title: Text("Chat with RechTUM...")),
+      appBar: AppBar(title: Text("Chat with RechTUM")),
       body: Column(
         children: [
           Expanded(
@@ -28,7 +29,7 @@ class ChatPage extends StatelessWidget {
   }
 
   Bubble fromMessage(BuildContext context, Message message) {
-    bool byMe = message.author == "User";
+    bool byMe = message.author == context.watch<AuthViewModel>().username;
 
     return Bubble(
       child: Text(message.text),
