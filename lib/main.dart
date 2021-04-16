@@ -23,13 +23,53 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("RechTUM"),
+      body: SafeArea(
+        child: Center(
+          child: ListView(
+            padding: EdgeInsets.all(8),
+            children: [
+              Card(
+                child: Padding(
+                  padding: const EdgeInsets.all(16),
+                  child: SvgPicture.asset(
+                    "images/undraw_Analysis_re_w2vd.svg",
+                    height: 200,
+                    semanticsLabel: "Studying data",
+                  ),
+                ),
+              ),
+              Card(
+                child: Padding(
+                  padding: const EdgeInsets.all(16),
+                  child: SvgPicture.asset(
+                    "images/undraw_book_reading_kx9s.svg",
+                    height: 200,
+                    semanticsLabel: "Reading a book",
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
       ),
-      body: Center(
-        child: SvgPicture.asset(
-          "images/undraw_Analysis_re_w2vd.svg",
-          semanticsLabel: "Reading a book",
+      floatingActionButton: SizedBox(
+        height: 64,
+        width: 64,
+        child: FloatingActionButton(
+          child: Icon(Icons.help_outline),
+          onPressed: () {},
+        ),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      bottomNavigationBar: BottomAppBar(
+        shape: CircularNotchedRectangle(),
+        notchMargin: 8,
+        child: Row(
+          children: [
+            IconButton(icon: Icon(Icons.filter_list_rounded), onPressed: () {}),
+            Spacer(),
+            IconButton(icon: Icon(Icons.more_vert), onPressed: () {}),
+          ],
         ),
       ),
     );
