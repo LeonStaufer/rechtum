@@ -40,3 +40,8 @@ flutter:
           weight: 300
         - asset: fonts/IBMPlexSans-Italic.ttf
           style: italic
+    - family: Open Sans
+      fonts:
+        - asset: fonts/OpenSans-Regular.ttf
+        - asset: fonts/OpenSans-Light.ttf
+          weight: 300
