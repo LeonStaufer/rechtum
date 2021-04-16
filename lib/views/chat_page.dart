@@ -31,8 +31,8 @@ class ChatPage extends StatelessWidget {
     bool byMe = message.author == "User";
 
     return Bubble(
-      child: Text(message.text, style: TextStyle(color: Colors.white)),
-      color: byMe ? Theme.of(context).primaryColorDark : Colors.grey.shade300,
+      child: Text(message.text),
+      color: byMe ? Theme.of(context).primaryColorLight : Colors.grey.shade300,
       nip: byMe ? BubbleNip.rightBottom : BubbleNip.leftBottom,
       alignment: byMe ? Alignment.topRight : Alignment.topLeft,
       margin: BubbleEdges.symmetric(vertical: 5),

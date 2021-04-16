@@ -9,10 +9,8 @@ import 'package:rechtum/views/chat_page.dart';
 import 'package:rechtum/views/home_page.dart';
 
 void main() {
-  setupDependencyInjection(
-    DebugLogger(),
-    GPT3(String.fromEnvironment("openAiKey")),
-  );
+  const openAiKey = String.fromEnvironment("openAiKey");
+  setupDependencyInjection(DebugLogger(), GPT3(openAiKey));
 
   runApp(App());
 }
