@@ -1,0 +1,70 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
+
+class HomePage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: HomeContent(),
+      floatingActionButton: SizedBox(
+        height: 64,
+        width: 64,
+        child: FloatingActionButton(
+          child: Icon(Icons.chat_bubble_outline_rounded, size: 36),
+          onPressed: () {},
+        ),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      bottomNavigationBar: BottomAppBar(
+        shape: CircularNotchedRectangle(),
+        notchMargin: 8,
+        child: Row(
+          children: [
+            IconButton(icon: Icon(Icons.class_), onPressed: () {}),
+            Spacer(),
+            IconButton(icon: Icon(Icons.more_vert), onPressed: () {}),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class HomeContent extends StatelessWidget {
+  const HomeContent({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return SafeArea(
+      child: Center(
+        child: ListView(
+          padding: EdgeInsets.all(8),
+          children: [
+            Card(
+              child: Padding(
+                padding: const EdgeInsets.all(16),
+                child: SvgPicture.asset(
+                  "images/undraw_Analysis_re_w2vd.svg",
+                  height: 200,
+                  semanticsLabel: "Studying data",
+                ),
+              ),
+            ),
+            Card(
+              child: Padding(
+                padding: const EdgeInsets.all(16),
+                child: SvgPicture.asset(
+                  "images/undraw_book_reading_kx9s.svg",
+                  height: 200,
+                  semanticsLabel: "Reading a book",
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
