@@ -2,9 +2,9 @@ import 'package:flutter/widgets.dart';
 
 /// base model for state management with [Provider]
 class BaseModel extends ChangeNotifier {
-  Status _status = Status.IDLE;
+  Status _status = Status.idle;
 
-  /// current exception of the model, is null unless the status is [Status.ERROR]
+  /// current exception of the model, is null unless the status is [Status.error]
   Exception? exception;
 
   /// current status of the model
@@ -20,11 +20,11 @@ class BaseModel extends ChangeNotifier {
 /// state of the model
 enum Status {
   /// model is not doing anything
-  IDLE,
+  idle,
 
   /// model is currently working
-  BUSY,
+  busy,
 
   /// model has encountered an error
-  ERROR
+  error
 }

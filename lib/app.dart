@@ -4,6 +4,7 @@ import 'package:rechtum/view_models/auth_view_model.dart';
 import 'package:rechtum/view_models/chat_view_model.dart';
 import 'package:rechtum/views/chat_page.dart';
 import 'package:rechtum/views/home_page.dart';
+import 'package:rechtum/views/welcome_page.dart';
 
 class App extends StatelessWidget {
   @override
@@ -33,10 +34,11 @@ class App extends StatelessWidget {
         title: "RechTUM",
         debugShowCheckedModeBanner: false,
         theme: theme,
-        initialRoute: "/",
+        initialRoute: "/welcome",
         routes: {
-          "/": (BuildContext context) => HomePage(),
-          "/chat": (BuildContext context) => ChatPage(),
+          "/welcome": (_) => WelcomePage(),
+          "/": (_) => HomePage(),
+          "/chat": (_) => ChatPage(),
         },
       ),
     );

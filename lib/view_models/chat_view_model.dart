@@ -25,7 +25,7 @@ class ChatViewModel extends BaseModel {
     if (text.isEmpty) return;
 
     _messages.add(Message(text: text, author: _authService.current.username));
-    setStatus(Status.IDLE);
+    setStatus(Status.idle);
 
     var answer =
         await _gpt3.completion(prompt + "Human:$text\nAI:", stop: "\n");
@@ -33,6 +33,6 @@ class ChatViewModel extends BaseModel {
     _logger.info(answer.choices.map((e) => e.text).join(","));
 
     _messages.add(Message(text: answer.choices[0].text, author: "GPT3"));
-    setStatus(Status.IDLE);
+    setStatus(Status.idle);
   }
 }

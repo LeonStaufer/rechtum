@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:rechtum/view_models/auth_view_model.dart';
+import 'package:provider/provider.dart';
 
 class HomePage extends StatelessWidget {
   @override
@@ -22,7 +24,9 @@ class HomePage extends StatelessWidget {
           children: [
             IconButton(icon: Icon(Icons.class_), onPressed: () {}),
             Spacer(),
-            IconButton(icon: Icon(Icons.more_vert), onPressed: () {}),
+            IconButton(icon: Icon(Icons.logout), onPressed: () {
+              context.read<AuthViewModel>().logout();
+            }),
           ],
         ),
       ),
@@ -57,8 +61,13 @@ class HomeContent extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text("Welcome to RechTUM!", style: Theme.of(context).textTheme.headline5?.copyWith(fontWeight: FontWeight.bold)),
-                  Text("Here you will be able to find answers to all your university related legal questions.")
+                  Text("Welcome ${context.read<AuthViewModel>().name}!",
+                      style: Theme.of(context)
+                          .textTheme
+                          .headline5
+                          ?.copyWith(fontWeight: FontWeight.bold)),
+                  Text(
+                      "Here you will be able to find answers to all your university related legal questions.")
                 ],
               ),
             ),
