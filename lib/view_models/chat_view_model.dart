@@ -17,7 +17,7 @@ class ChatViewModel extends BaseModel {
   List<Message> _messages = <Message>[];
 
   static const prompt = """
-  The following is a conversation with an AI assistant. The assistant is helpful, creative, clever, and very friendly.Human: Hello, who are you?\nAI: I am an AI created by OpenAI. How can I help you today?\n
+  The following is a conversation with a legal advisor who is an expert in German law and especially in university law. The advisor is helpful, creative clever, and very exact.\n\nHuman: Hello, who are you?\nAI: I am a legal advisor AI specialized in German law. How can I help you today?\n
   """;
 
   void sendMessage(String text) async {
@@ -28,7 +28,16 @@ class ChatViewModel extends BaseModel {
     setStatus(Status.idle);
 
     var answer =
-        await _gpt3.completion(prompt + "Human:$text\nAI:", stop: "\n");
+        await _gpt3.completion(prompt + "Human:$text\nAI:",
+          maxTokens: 150,
+          temperature: 0.25, // deterministic, repetitive --> random
+          topP: 1,
+          frequencyPenalty: 0.5, // the higher the less likely the model repeats itself
+          presencePenalty: 0.5, // the higher the higher the likelihood that the model introduces new topics
+          bestOf: 1,
+          engine: Engine.davinci,
+          stop: "\n"
+        );
 
     _logger.info(answer.choices.map((e) => e.text).join(","));
 
