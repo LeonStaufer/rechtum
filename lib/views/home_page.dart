@@ -54,10 +54,12 @@ class HomeContent extends StatelessWidget {
           Card(
             child: Padding(
               padding: const EdgeInsets.all(16),
-              child: SvgPicture.asset(
-                "images/undraw_book_reading_kx9s.svg",
-                height: 200,
-                semanticsLabel: "Reading a book",
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text("Welcome to RechTUM!", style: Theme.of(context).textTheme.headline5),
+                  Text("Here you will be able to find answers to all your university related legal questions.")
+                ],
               ),
             ),
           ),
