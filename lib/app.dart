@@ -3,11 +3,13 @@ import 'package:provider/provider.dart';
 import 'package:rechtum/utils/color.dart';
 import 'package:rechtum/view_models/auth_view_model.dart';
 import 'package:rechtum/view_models/document_overview_view_model.dart';
+import 'package:rechtum/view_models/qa_question_view_model.dart';
 import 'package:rechtum/views/chat_page.dart';
 import 'package:rechtum/views/document_overview_page.dart';
 import 'package:rechtum/views/document_page.dart';
 import 'package:rechtum/views/home_page.dart';
 import 'package:rechtum/views/login_page.dart';
+import 'package:rechtum/views/university_questions_page.dart';
 import 'package:rechtum/views/welcome_page.dart';
 import 'package:vrouter/vrouter.dart';
 
@@ -18,22 +20,26 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final ThemeData theme = ThemeData(
-      fontFamily: "Opens Sans",
-      primarySwatch: createMaterialColor(primary),
-      primaryColorDark: Color(0xff262F73),
-      primaryColor: primary,
-      primaryColorLight: Color(0xffA3AAE0),
-      accentColor: primary,
-      iconTheme: IconThemeData(color: Color(0xff262F73)),
-      textTheme: TextTheme(
-        headline1: TextStyle(fontFamily: "IBM Plex Sans"),
-        headline2: TextStyle(fontFamily: "IBM Plex Sans"),
-        headline3: TextStyle(fontFamily: "IBM Plex Sans"),
-        headline4: TextStyle(fontFamily: "IBM Plex Sans"),
-        headline5: TextStyle(fontFamily: "IBM Plex Sans"),
-        headline6: TextStyle(fontFamily: "IBM Plex Sans"),
-      ),
-    );
+        fontFamily: "Opens Sans",
+        primarySwatch: createMaterialColor(primary),
+        primaryColorDark: Color(0xff262F73),
+        primaryColor: primary,
+        primaryColorLight: Color(0xffA3AAE0),
+        accentColor: primary,
+        iconTheme: IconThemeData(color: Color(0xff262F73)),
+        textTheme: TextTheme(
+          headline1: TextStyle(fontFamily: "IBM Plex Sans"),
+          headline2: TextStyle(fontFamily: "IBM Plex Sans"),
+          headline3: TextStyle(fontFamily: "IBM Plex Sans"),
+          headline4: TextStyle(fontFamily: "IBM Plex Sans"),
+          headline5: TextStyle(fontFamily: "IBM Plex Sans"),
+          headline6: TextStyle(fontFamily: "IBM Plex Sans"),
+        ),
+        cardTheme: CardTheme(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(10.0),
+          ),
+        ));
 
     return VRouter(
       title: "RechTUM",
@@ -70,6 +76,13 @@ class App extends StatelessWidget {
                             path: "document/:id",
                             widget: DocumentPageWrapper()),
                       ]),
+                  VWidget(
+                    path: "university",
+                    widget: ChangeNotifierProvider<QAViewModel>(
+                      create: (_) => QAViewModel(),
+                      child: UniversityQuestionPage(),
+                    ),
+                  ),
                 ],
               ),
             ]),

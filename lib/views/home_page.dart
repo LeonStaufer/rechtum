@@ -16,6 +16,7 @@ class HomePage extends StatelessWidget {
         child: FloatingActionButton(
           child: Icon(Icons.chat_bubble_outline_rounded, size: 36),
           onPressed: () => context.vRouter.push("/chat"),
+          elevation: 12,
         ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
@@ -79,6 +80,7 @@ class HomeContent extends StatelessWidget {
           ),
           Card(
             child: ListTile(
+              onTap: () => context.vRouter.push("/university"),
               contentPadding: const EdgeInsets.all(16),
               trailing: SvgPicture.asset(
                 "assets/undraw_education.svg",
@@ -93,20 +95,20 @@ class HomeContent extends StatelessWidget {
           ),
           Card(
             child: ListTile(
+              onTap: () {},
               contentPadding: const EdgeInsets.all(16),
               trailing: SvgPicture.asset(
                 "assets/undraw_town.svg",
                 width: 100,
                 semanticsLabel: "Small town",
               ),
-              title: Text("Rent",
-                  style: Theme.of(context).textTheme.headline5),
-              subtitle: Text(
-                  "I have a problem with my rent or my landlord."),
+              title: Text("Rent", style: Theme.of(context).textTheme.headline5),
+              subtitle: Text("I have a problem with my rent or my landlord."),
             ),
           ),
           Card(
             child: ListTile(
+              onTap: () {},
               contentPadding: const EdgeInsets.all(16),
               trailing: SvgPicture.asset(
                 "assets/undraw_working.svg",
@@ -115,8 +117,8 @@ class HomeContent extends StatelessWidget {
               ),
               title: Text("Employment",
                   style: Theme.of(context).textTheme.headline5),
-              subtitle: Text(
-                  "I have a problem with my working student contract."),
+              subtitle:
+                  Text("I have a problem with my working student contract."),
             ),
           ),
         ],
