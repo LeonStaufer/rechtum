@@ -51,14 +51,12 @@ class HomeContent extends StatelessWidget {
       child: ListView(
         padding: EdgeInsets.all(8),
         children: [
-          Card(
-            child: Padding(
-              padding: const EdgeInsets.all(16),
-              child: SvgPicture.asset(
-                "assets/undraw_Analysis_re_w2vd.svg",
-                height: 200,
-                semanticsLabel: "Studying data",
-              ),
+          Padding(
+            padding: const EdgeInsets.all(16),
+            child: SvgPicture.asset(
+              "assets/undraw_messages.svg",
+              height: 200,
+              semanticsLabel: "Man looking at chat messages",
             ),
           ),
           Card(

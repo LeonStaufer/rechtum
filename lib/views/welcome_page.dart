@@ -33,9 +33,9 @@ class WelcomePage extends StatelessWidget {
         body: "Get Legal Advice from our GPT-3 law specialist.",
         image: Center(
           child: SvgPicture.asset(
-            "assets/undraw_Analysis_re_w2vd.svg",
+            "assets/undraw_ai.svg",
             height: 200,
-            semanticsLabel: "Woman studying data",
+            semanticsLabel: "Woman consulting an AI Robot",
           ),
         ),
       );
@@ -45,9 +45,9 @@ class WelcomePage extends StatelessWidget {
         body: "Have a friendly conversation with our RechTUM chatbot.",
         image: Center(
           child: SvgPicture.asset(
-            "assets/undraw_happy_feeling_slmw.svg",
+            "assets/undraw_chatting.svg",
             height: 200,
-            semanticsLabel: "Woman with balloons feeling happy",
+            semanticsLabel: "Chat messages on a phone",
           ),
         ),
       );
@@ -57,9 +57,9 @@ class WelcomePage extends StatelessWidget {
         body: "Solve your legal questions - quick and easy.",
         image: Center(
           child: SvgPicture.asset(
-            "assets/undraw_happy_feeling_slmw.svg",
+            "assets/undraw_feeling_happy.svg",
             height: 200,
-            semanticsLabel: "Woman with balloons feeling happy",
+            semanticsLabel: "Woman with balloon feeling happy",
           ),
         ),
       );
@@ -89,7 +89,7 @@ class WelcomePage extends StatelessWidget {
         ),
         image: Center(
           child: SvgPicture.asset(
-            "assets/undraw_Login_re_4vu2.svg",
+            "assets/undraw_login.svg",
             height: 200,
             semanticsLabel: "Man unlocking a door",
           ),
