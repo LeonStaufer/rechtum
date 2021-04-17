@@ -24,6 +24,7 @@ dependencies:
 
 dev_dependencies:
   pedantic: ^1.11.0
+  flutter_launcher_icons: ^0.9.0
   flutter_test:
     sdk: flutter
 
@@ -48,3 +49,9 @@ flutter:
         - asset: fonts/OpenSans-Regular.ttf
         - asset: fonts/OpenSans-Light.ttf
           weight: 300
+
+flutter_icons:
+  image_path: "assets/icon.png"
+  android: true
+  ios: true
+

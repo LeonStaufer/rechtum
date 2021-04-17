@@ -7,6 +7,7 @@ import 'package:vrouter/vrouter.dart';
 
 class WelcomePage extends StatelessWidget {
   List<PageViewModel> _pages(context) => [
+        landingIconPage(),
         landingPage(),
         landingFriendlyConversationsPage(),
         landingLegalQuestionsPage(),
@@ -27,6 +28,17 @@ class WelcomePage extends StatelessWidget {
       ),
     );
   }
+
+  static PageViewModel landingIconPage() => PageViewModel(
+    title: "",
+    body: "",
+    image: Center(
+      child: Image.asset(
+        "assets/iconTransparent.png",
+        height: 160,
+      ),
+    ),
+  );
 
   static PageViewModel landingPage() => PageViewModel(
         title: "Welcome to RechTUM!",

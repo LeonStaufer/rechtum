@@ -1,4 +1,4 @@
-package com.example.rechtum
+package me.staufer.rechtum
 
 import io.flutter.embedding.android.FlutterActivity
 
