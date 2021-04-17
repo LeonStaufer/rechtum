@@ -25,10 +25,12 @@ class HomePage extends StatelessWidget {
           children: [
             IconButton(icon: Icon(Icons.class_), onPressed: () {}),
             Spacer(),
-            IconButton(icon: Icon(Icons.logout), onPressed: () {
-              context.vRouter.pushReplacement("/welcome");
-              context.read<AuthViewModel>().logout();
-            }),
+            IconButton(
+                icon: Icon(Icons.logout),
+                onPressed: () {
+                  context.vRouter.pushReplacement("/welcome");
+                  context.read<AuthViewModel>().logout();
+                }),
           ],
         ),
       ),
@@ -51,7 +53,7 @@ class HomeContent extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.all(16),
               child: SvgPicture.asset(
-                "images/undraw_Analysis_re_w2vd.svg",
+                "assets/undraw_Analysis_re_w2vd.svg",
                 height: 200,
                 semanticsLabel: "Studying data",
               ),

@@ -35,7 +35,7 @@ class WelcomePage extends StatelessWidget {
             "Here you will be able to find answers to all your university related legal questions",
         image: Center(
           child: SvgPicture.asset(
-            "images/undraw_Analysis_re_w2vd.svg",
+            "assets/undraw_Analysis_re_w2vd.svg",
             height: 200,
             semanticsLabel: "Woman studying data",
           ),
@@ -47,7 +47,7 @@ class WelcomePage extends StatelessWidget {
         body: "We make legal advice easy and accessible.",
         image: Center(
           child: SvgPicture.asset(
-            "images/undraw_happy_feeling_slmw.svg",
+            "assets/undraw_happy_feeling_slmw.svg",
             height: 200,
             semanticsLabel: "Woman with balloons feeling happy",
           ),
@@ -81,7 +81,7 @@ class WelcomePage extends StatelessWidget {
         ),
         image: Center(
           child: SvgPicture.asset(
-            "images/undraw_Login_re_4vu2.svg",
+            "assets/undraw_Login_re_4vu2.svg",
             height: 200,
             semanticsLabel: "Man unlocking a door",
           ),
