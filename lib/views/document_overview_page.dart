@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:native_pdf_view/native_pdf_view.dart';
 import 'package:rechtum/models/document.dart';
@@ -12,17 +14,45 @@ class DocumentOverviewPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Document Overview"),
-        leading: BackButton(onPressed: () => context.vRouter.pop()),
+      extendBodyBehindAppBar: true,
+      appBar: PreferredSize(
+        child: ClipRRect(
+          child: BackdropFilter(
+            filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
+            child: AppBar(
+              title: Text(
+                "Document Overview",
+                style: TextStyle(color: Colors.black87),
+              ),
+              leading: BackButton(
+                onPressed: () => context.vRouter.pop(),
+                color: Colors.black87,
+              ),
+              backgroundColor: Theme.of(context).primaryColor.withOpacity(0.3),
+              shadowColor: Colors.transparent,
+            ),
+          ),
+        ),
+        preferredSize: Size(
+          double.infinity,
+          56,
+        ),
       ),
       body: ListView(
         padding: EdgeInsets.all(8),
-        children: context
+        children: [
+          SizedBox(height: 96),
+          Padding(
+            padding: const EdgeInsets.all(16),
+            child: Text(
+                "Here you will find an overview of all the official legal documents for your course."),
+          ),
+          Divider(thickness: 2, height: 16),
+        ]..addAll(context
             .read<DocumentOverviewViewModel>()
             .getDocuments()
             .map((e) => DocumentCard(e))
-            .toList(),
+            .toList()),
       ),
     );
   }

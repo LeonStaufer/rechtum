@@ -34,7 +34,7 @@ class WelcomePage extends StatelessWidget {
         image: Center(
           child: SvgPicture.asset(
             "assets/undraw_ai.svg",
-            height: 200,
+            height: 160,
             semanticsLabel: "Woman consulting an AI Robot",
           ),
         ),
