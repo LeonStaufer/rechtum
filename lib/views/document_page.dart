@@ -1,8 +1,11 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:native_pdf_view/native_pdf_view.dart';
 import 'package:rechtum/models/document.dart';
 import 'package:rechtum/services/document.dart';
 import 'package:rechtum/services/locator.dart';
+import 'package:rechtum/views/widgets.dart';
 import 'package:vrouter/vrouter.dart';
 
 class DocumentPageWrapper extends StatelessWidget {
@@ -51,15 +54,17 @@ class _DocumentPageState extends State<DocumentPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-        actions: <Widget>[
+      extendBodyBehindAppBar: true,
+      appBar: FrostedGlassAppBar(
+        title: widget.title,
+        actions: [
           IconButton(
             icon: Icon(Icons.navigate_before),
+            color: Colors.black87,
             onPressed: () {
               _pdfController.previousPage(
                 curve: Curves.ease,
-                duration: Duration(milliseconds: 100),
+                duration: Duration(milliseconds: 200),
               );
             },
           ),
@@ -67,15 +72,16 @@ class _DocumentPageState extends State<DocumentPage> {
             alignment: Alignment.center,
             child: Text(
               '$_actualPageNumber/$_allPagesCount',
-              style: TextStyle(fontSize: 22),
+              style: TextStyle(fontSize: 16, color: Colors.black87),
             ),
           ),
           IconButton(
             icon: Icon(Icons.navigate_next),
+            color: Colors.black87,
             onPressed: () {
               _pdfController.nextPage(
                 curve: Curves.ease,
-                duration: Duration(milliseconds: 100),
+                duration: Duration(milliseconds: 200),
               );
             },
           )
@@ -85,6 +91,7 @@ class _DocumentPageState extends State<DocumentPage> {
         documentLoader: Center(child: CircularProgressIndicator()),
         pageLoader: Center(child: CircularProgressIndicator()),
         controller: _pdfController,
+        scrollDirection: Axis.vertical,
         onDocumentLoaded: (document) {
           setState(() {
             _allPagesCount = document.pagesCount;

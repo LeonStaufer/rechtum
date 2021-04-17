@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:bubble/bubble.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
@@ -8,7 +6,7 @@ import 'package:provider/provider.dart';
 import 'package:rechtum/models/message.dart';
 import 'package:rechtum/view_models/auth_view_model.dart';
 import 'package:rechtum/view_models/chat_view_model.dart';
-import 'package:vrouter/vrouter.dart';
+import 'package:rechtum/views/widgets.dart';
 
 class ChatPage extends StatelessWidget {
   @override
@@ -16,29 +14,7 @@ class ChatPage extends StatelessWidget {
     ChatViewModel viewModel = context.watch<ChatViewModel>();
     return Scaffold(
       extendBodyBehindAppBar: true,
-      appBar: PreferredSize(
-        child: ClipRRect(
-          child: BackdropFilter(
-            filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
-            child: AppBar(
-              title: Text(
-                "Legal Assistant",
-                style: TextStyle(color: Colors.black87),
-              ),
-              leading: BackButton(
-                onPressed: () => context.vRouter.pop(),
-                color: Colors.black87,
-              ),
-              backgroundColor: Theme.of(context).primaryColor.withOpacity(0.3),
-              shadowColor: Colors.transparent,
-            ),
-          ),
-        ),
-        preferredSize: Size(
-          double.infinity,
-          56.0,
-        ),
-      ),
+      appBar: FrostedGlassAppBar(title: "Legal Assistant"),
       body: Column(
         children: [
           Expanded(
