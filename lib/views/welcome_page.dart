@@ -8,8 +8,9 @@ import 'package:vrouter/vrouter.dart';
 class WelcomePage extends StatelessWidget {
   List<PageViewModel> _pages(context) => [
         landingPage(),
-        landingPage2(),
-        landingPage3(context),
+        landingFriendlyConversationsPage(),
+        landingLegalQuestionsPage(),
+        landingLoginPage(context),
       ];
 
   @override
@@ -20,19 +21,16 @@ class WelcomePage extends StatelessWidget {
           pages: _pages(context),
           next: const Icon(Icons.navigate_next),
           showDoneButton: false,
-          onDone: () {
-            context.read<AuthViewModel>().login("leon", "Leon", "");
-            context.vRouter.push("/");
-          },
+          color: Theme.of(context).primaryColor,
+          dotsDecorator: DotsDecorator(activeColor: Theme.of(context).primaryColor),
         ),
       ),
     );
   }
 
   static PageViewModel landingPage() => PageViewModel(
-        title: "Welcome to RechTUM",
-        body:
-            "Here you will be able to find answers to all your university related legal questions",
+        title: "Welcome to RechTUM!",
+        body: "Get Legal Advice from our GPT-3 law specialist.",
         image: Center(
           child: SvgPicture.asset(
             "assets/undraw_Analysis_re_w2vd.svg",
@@ -42,9 +40,9 @@ class WelcomePage extends StatelessWidget {
         ),
       );
 
-  static PageViewModel landingPage2() => PageViewModel(
-        title: "Simple legal help",
-        body: "We make legal advice easy and accessible.",
+  static PageViewModel landingFriendlyConversationsPage() => PageViewModel(
+        title: "Just ask questions",
+        body: "Have a friendly conversation with our RechTUM chatbot.",
         image: Center(
           child: SvgPicture.asset(
             "assets/undraw_happy_feeling_slmw.svg",
@@ -54,12 +52,22 @@ class WelcomePage extends StatelessWidget {
         ),
       );
 
-  static PageViewModel landingPage3(BuildContext context) => PageViewModel(
-        title: "Login to begin",
+  static PageViewModel landingLegalQuestionsPage() => PageViewModel(
+        title: "and receive simple legal help",
+        body: "Solve your legal questions - quick and easy.",
+        image: Center(
+          child: SvgPicture.asset(
+            "assets/undraw_happy_feeling_slmw.svg",
+            height: 200,
+            semanticsLabel: "Woman with balloons feeling happy",
+          ),
+        ),
+      );
+
+  static PageViewModel landingLoginPage(BuildContext context) => PageViewModel(
+        title: "Let's get started",
         bodyWidget: Column(
           children: [
-            Text("You can use your preexisting university login."),
-            SizedBox(height: 96),
             SizedBox(
               width: double.infinity,
               child: ElevatedButton(

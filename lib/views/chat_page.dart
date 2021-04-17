@@ -37,9 +37,10 @@ class ChatPage extends StatelessWidget {
 
     return Bubble(
       child: Text(message.text),
-      color: byMe ? Theme.of(context).primaryColorLight : Colors.grey.shade300,
+      color: byMe ? Theme.of(context).primaryColorLight : Colors.grey.shade200,
       nip: byMe ? BubbleNip.rightBottom : BubbleNip.leftBottom,
       alignment: byMe ? Alignment.topRight : Alignment.topLeft,
+      padding: BubbleEdges.all(12),
       margin: BubbleEdges.symmetric(vertical: 5),
     );
   }
@@ -52,7 +53,7 @@ class SendRow extends StatelessWidget {
   Widget build(BuildContext context) {
     final ChatViewModel viewModel = context.watch<ChatViewModel>();
     return Padding(
-      padding: const EdgeInsets.all(8.0),
+      padding: const EdgeInsets.fromLTRB(8,0,8,8),
       child: Row(
         children: [
           Expanded(
@@ -60,7 +61,7 @@ class SendRow extends StatelessWidget {
             controller: controller,
             decoration: InputDecoration(
               suffixIcon: Icon(Icons.send),
-              hintText: "What do you need help with?",
+              hintText: "How can I help you?",
               border: OutlineInputBorder(
                 borderSide:
                     BorderSide(color: Theme.of(context).accentColor, width: 8),

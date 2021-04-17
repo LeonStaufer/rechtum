@@ -36,12 +36,12 @@ class ChatViewModel extends BaseModel {
           presencePenalty: 0.5, // the higher the higher the likelihood that the model introduces new topics
           bestOf: 1,
           engine: Engine.davinci,
-          stop: "\n"
+          stop: "Human:"
         );
 
     _logger.info(answer.choices.map((e) => e.text).join(","));
 
-    _messages.add(Message(text: answer.choices[0].text, author: "GPT3"));
+    _messages.add(Message(text: answer.choices[0].text.trim(), author: "GPT3"));
     setStatus(Status.idle);
   }
 }
