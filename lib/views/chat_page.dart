@@ -19,11 +19,7 @@ class ChatPage extends StatelessWidget {
         children: [
           Expanded(
             child: viewModel.messages.isEmpty
-                ? SvgPicture.asset(
-                    "assets/undraw_questions.svg",
-                    height: 200,
-                    semanticsLabel: "Woman and man with a quetion mark",
-                  )
+                ? buildQuestionHintAndDisclaimer(context)
                 : ListView(
                     reverse: true,
                     padding: EdgeInsets.all(16),
@@ -34,6 +30,27 @@ class ChatPage extends StatelessWidget {
           SendRow(),
         ],
       ),
+    );
+  }
+
+  Column buildQuestionHintAndDisclaimer(BuildContext context) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        SvgPicture.asset(
+          "assets/undraw_questions.svg",
+          height: 200,
+          semanticsLabel: "Woman and man with a quetion mark",
+        ),
+        Padding(
+          padding: const EdgeInsets.all(16),
+          child: Text(
+            "Please note, that this is not legal advice and \nonly of informational nature.",
+            style: Theme.of(context).textTheme.caption,
+          ),
+        ),
+      ],
     );
   }
 
