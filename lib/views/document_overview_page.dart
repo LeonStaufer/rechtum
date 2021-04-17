@@ -12,6 +12,9 @@ class DocumentOverviewPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    DocumentOverviewViewModel viewModel =
+        context.read<DocumentOverviewViewModel>();
+
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: FrostedGlassAppBar(title: "Document Overview"),
@@ -24,24 +27,29 @@ class DocumentOverviewPage extends StatelessWidget {
             child: Text(
                 "Here you will find an overview of all the official legal documents for your course."),
           ),
-          Divider(thickness: 2, height: 16),
-        ]..addAll(context
-            .read<DocumentOverviewViewModel>()
-            .getDocuments()
-            .map((e) => DocumentCard(e))
-            .toList()),
+        ]
+          ..addAll(
+              viewModel.getUniDocuments().map((e) => DocumentCard(e)).toList())
+          ..addAll([
+            Divider(thickness: 2, height: 16),
+            Padding(
+              padding: const EdgeInsets.all(16),
+              child: Text(
+                  "Here are general documents, that may help with legal issues."),
+            ),
+          ]..addAll(viewModel
+              .getGermanyDocuments()
+              .map((e) => DocumentCard(e))
+              .toList())),
       ),
     );
   }
 }
 
 class DocumentCard extends StatelessWidget {
-  DocumentCard(this.document)
-      : controller =
-            PdfController(document: PdfDocument.openAsset(document.filePath));
+  DocumentCard(this.document);
 
   final Document document;
-  final PdfController controller;
 
   @override
   Widget build(BuildContext context) {

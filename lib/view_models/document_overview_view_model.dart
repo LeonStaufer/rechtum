@@ -4,7 +4,10 @@ import 'package:rechtum/services/locator.dart';
 import 'package:rechtum/view_models/base_model.dart';
 
 class DocumentOverviewViewModel extends BaseModel {
-  List<Document> getDocuments() {
-    return locator.get<DocumentService>().getDocuments();
-  }
+  final DocumentService _documentService = locator.get<DocumentService>();
+
+  List<Document> getUniDocuments() => _documentService.getUniDocuments();
+
+  List<Document> getGermanyDocuments() =>
+      _documentService.getGermanyDocuments();
 }
