@@ -19,6 +19,7 @@ dependencies:
       url: https://github.com/LeonStaufer/openai_gpt3_dart_api
   bubble: ^1.2.1
   introduction_screen: ^2.1.0
+  vrouter: ^1.1.0+20
 
 dev_dependencies:
   pedantic: ^1.11.0

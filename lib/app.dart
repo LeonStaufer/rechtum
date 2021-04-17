@@ -1,10 +1,12 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:rechtum/view_models/auth_view_model.dart';
-import 'package:rechtum/view_models/chat_view_model.dart';
 import 'package:rechtum/views/chat_page.dart';
 import 'package:rechtum/views/home_page.dart';
 import 'package:rechtum/views/welcome_page.dart';
+import 'package:vrouter/vrouter.dart';
 
 class App extends StatelessWidget {
   @override
@@ -25,22 +27,23 @@ class App extends StatelessWidget {
       ),
     );
 
-    return MultiProvider(
-      providers: [
-        ChangeNotifierProvider<AuthViewModel>(create: (_) => AuthViewModel()),
-        ChangeNotifierProvider<ChatViewModel>(create: (_) => ChatViewModel()),
+    return VRouter(
+      title: "RechTUM",
+      debugShowCheckedModeBanner: false,
+      theme: theme,
+      routes: [
+        VWidget(path: "/login", widget: WelcomePage()),
+        VGuard(
+            beforeEnter: (v) async => context.read<AuthViewModel>().loggedIn
+                ? null
+                : v.push("/login"),
+            stackedRoutes: [
+              VWidget(path: "/", widget: HomePage(), stackedRoutes: [
+                VWidget(path: "/chat", widget: ChatPage()),
+              ]),
+            ]),
+        VRouteRedirector(path: ":_(.+)", redirectTo: "/")
       ],
-      child: MaterialApp(
-        title: "RechTUM",
-        debugShowCheckedModeBanner: false,
-        theme: theme,
-        initialRoute: "/welcome",
-        routes: {
-          "/welcome": (_) => WelcomePage(),
-          "/": (_) => HomePage(),
-          "/chat": (_) => ChatPage(),
-        },
-      ),
     );
   }
 }

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:rechtum/view_models/auth_view_model.dart';
 import 'package:provider/provider.dart';
+import 'package:vrouter/vrouter.dart';
 
 class HomePage extends StatelessWidget {
   @override
@@ -13,7 +14,7 @@ class HomePage extends StatelessWidget {
         width: 64,
         child: FloatingActionButton(
           child: Icon(Icons.chat_bubble_outline_rounded, size: 36),
-          onPressed: () => Navigator.pushNamed(context, "/chat"),
+          onPressed: () => context.vRouter.push("/chat"),
         ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
@@ -25,6 +26,7 @@ class HomePage extends StatelessWidget {
             IconButton(icon: Icon(Icons.class_), onPressed: () {}),
             Spacer(),
             IconButton(icon: Icon(Icons.logout), onPressed: () {
+              context.vRouter.pushReplacement("/login");
               context.read<AuthViewModel>().logout();
             }),
           ],

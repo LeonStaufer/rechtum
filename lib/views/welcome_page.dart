@@ -3,6 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:introduction_screen/introduction_screen.dart';
 import 'package:rechtum/view_models/auth_view_model.dart';
 import 'package:provider/provider.dart';
+import 'package:vrouter/vrouter.dart';
 
 class WelcomePage extends StatelessWidget {
   final List<PageViewModel> _pages = [
@@ -23,7 +24,7 @@ class WelcomePage extends StatelessWidget {
             context
                 .read<AuthViewModel>()
                 .login("leon", "Leon", "");
-            Navigator.pushNamed(context, "/");
+            context.vRouter.push("/");
           },
         ),
       ),

@@ -5,13 +5,17 @@ import 'package:provider/provider.dart';
 import 'package:rechtum/models/message.dart';
 import 'package:rechtum/view_models/auth_view_model.dart';
 import 'package:rechtum/view_models/chat_view_model.dart';
+import 'package:vrouter/vrouter.dart';
 
 class ChatPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     ChatViewModel viewModel = context.watch<ChatViewModel>();
     return Scaffold(
-      appBar: AppBar(title: Text("Chat with RechTUM")),
+      appBar: AppBar(
+        title: Text("Chat with RechTUM"),
+        leading: BackButton(onPressed: () => context.vRouter.pop()),
+      ),
       body: Column(
         children: [
           Expanded(
