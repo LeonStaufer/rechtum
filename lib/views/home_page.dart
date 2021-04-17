@@ -26,7 +26,7 @@ class HomePage extends StatelessWidget {
             IconButton(icon: Icon(Icons.class_), onPressed: () {}),
             Spacer(),
             IconButton(icon: Icon(Icons.logout), onPressed: () {
-              context.vRouter.pushReplacement("/login");
+              context.vRouter.pushReplacement("/welcome");
               context.read<AuthViewModel>().logout();
             }),
           ],

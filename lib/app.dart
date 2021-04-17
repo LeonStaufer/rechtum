@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 import 'package:rechtum/view_models/auth_view_model.dart';
 import 'package:rechtum/views/chat_page.dart';
 import 'package:rechtum/views/home_page.dart';
+import 'package:rechtum/views/login_page.dart';
 import 'package:rechtum/views/welcome_page.dart';
 import 'package:vrouter/vrouter.dart';
 
@@ -32,15 +33,25 @@ class App extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: theme,
       routes: [
-        VWidget(path: "/login", widget: WelcomePage()),
+        VWidget(
+          path: "/welcome",
+          widget: WelcomePage(),
+          stackedRoutes: [
+            VWidget(path: "/login", widget: LoginPage()),
+          ],
+        ),
         VGuard(
             beforeEnter: (v) async => context.read<AuthViewModel>().loggedIn
                 ? null
-                : v.push("/login"),
+                : v.push("/welcome"),
             stackedRoutes: [
-              VWidget(path: "/", widget: HomePage(), stackedRoutes: [
-                VWidget(path: "/chat", widget: ChatPage()),
-              ]),
+              VWidget(
+                path: "/",
+                widget: HomePage(),
+                stackedRoutes: [
+                  VWidget(path: "/chat", widget: ChatPage()),
+                ],
+              ),
             ]),
         VRouteRedirector(path: ":_(.+)", redirectTo: "/")
       ],

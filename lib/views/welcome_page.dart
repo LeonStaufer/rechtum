@@ -6,24 +6,22 @@ import 'package:provider/provider.dart';
 import 'package:vrouter/vrouter.dart';
 
 class WelcomePage extends StatelessWidget {
-  final List<PageViewModel> _pages = [
-    landingPage(),
-    landingPage2(),
-    landingPage3(),
-  ];
+  List<PageViewModel> _pages(context) => [
+        landingPage(),
+        landingPage2(),
+        landingPage3(context),
+      ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
         child: IntroductionScreen(
-          pages: _pages,
+          pages: _pages(context),
           next: const Icon(Icons.navigate_next),
-          done: const Icon(Icons.done),
+          showDoneButton: false,
           onDone: () {
-            context
-                .read<AuthViewModel>()
-                .login("leon", "Leon", "");
+            context.read<AuthViewModel>().login("leon", "Leon", "");
             context.vRouter.push("/");
           },
         ),
@@ -56,9 +54,31 @@ class WelcomePage extends StatelessWidget {
         ),
       );
 
-  static PageViewModel landingPage3() => PageViewModel(
+  static PageViewModel landingPage3(BuildContext context) => PageViewModel(
         title: "Login to begin",
-        body: "You can use your preexisting university login.",
+        bodyWidget: Column(
+          children: [
+            Text("You can use your preexisting university login."),
+            SizedBox(height: 96),
+            SizedBox(
+              width: double.infinity,
+              child: ElevatedButton(
+                onPressed: () => context.vRouter.push("/login"),
+                child: Text("Login"),
+              ),
+            ),
+            SizedBox(
+              width: double.infinity,
+              child: OutlinedButton(
+                onPressed: () {
+                  context.read<AuthViewModel>().login("", "", "imageURL");
+                  context.vRouter.pushReplacement("/");
+                },
+                child: Text("Skip for now"),
+              ),
+            ),
+          ],
+        ),
         image: Center(
           child: SvgPicture.asset(
             "images/undraw_Login_re_4vu2.svg",
