@@ -23,7 +23,9 @@ class HomePage extends StatelessWidget {
         notchMargin: 8,
         child: Row(
           children: [
-            IconButton(icon: Icon(Icons.class_), onPressed: () {}),
+            IconButton(
+                icon: Icon(Icons.collections_bookmark_rounded),
+                onPressed: () => context.vRouter.push("/documents")),
             Spacer(),
             IconButton(
                 icon: Icon(Icons.logout),
