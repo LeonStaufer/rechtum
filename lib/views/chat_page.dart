@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:bubble/bubble.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:provider/provider.dart';
 import 'package:rechtum/models/message.dart';
 import 'package:rechtum/view_models/auth_view_model.dart';
@@ -41,12 +42,18 @@ class ChatPage extends StatelessWidget {
       body: Column(
         children: [
           Expanded(
-            child: ListView(
-                reverse: true,
-                padding: EdgeInsets.all(16),
-                children: viewModel.messages.reversed
-                    .map((msg) => fromMessage(context, msg))
-                    .toList()),
+            child: viewModel.messages.isEmpty
+                ? SvgPicture.asset(
+                    "assets/undraw_questions.svg",
+                    height: 200,
+                    semanticsLabel: "Woman and man with a quetion mark",
+                  )
+                : ListView(
+                    reverse: true,
+                    padding: EdgeInsets.all(16),
+                    children: viewModel.messages.reversed
+                        .map((msg) => fromMessage(context, msg))
+                        .toList()),
           ),
           SendRow(),
         ],
