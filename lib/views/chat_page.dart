@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:bubble/bubble.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
@@ -12,9 +14,29 @@ class ChatPage extends StatelessWidget {
   Widget build(BuildContext context) {
     ChatViewModel viewModel = context.watch<ChatViewModel>();
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Chat with RechTUM"),
-        leading: BackButton(onPressed: () => context.vRouter.pop()),
+      extendBodyBehindAppBar: true,
+      appBar: PreferredSize(
+        child: ClipRRect(
+          child: BackdropFilter(
+            filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
+            child: AppBar(
+              title: Text(
+                "Legal Assistant",
+                style: TextStyle(color: Colors.black87),
+              ),
+              leading: BackButton(
+                onPressed: () => context.vRouter.pop(),
+                color: Colors.black87,
+              ),
+              backgroundColor: Theme.of(context).primaryColor.withOpacity(0.3),
+              shadowColor: Colors.transparent,
+            ),
+          ),
+        ),
+        preferredSize: Size(
+          double.infinity,
+          56.0,
+        ),
       ),
       body: Column(
         children: [
@@ -53,7 +75,7 @@ class SendRow extends StatelessWidget {
   Widget build(BuildContext context) {
     final ChatViewModel viewModel = context.watch<ChatViewModel>();
     return Padding(
-      padding: const EdgeInsets.fromLTRB(8,0,8,8),
+      padding: const EdgeInsets.fromLTRB(8, 0, 8, 8),
       child: Row(
         children: [
           Expanded(
