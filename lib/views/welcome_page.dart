@@ -49,7 +49,7 @@ class WelcomePage extends StatelessWidget {
 
   static PageViewModel landingPage() => PageViewModel(
         title: "Welcome to RechTUM!",
-        body: "Get Legal Advice from our GPT-3 law specialist.",
+        body: "Get legal assistance from our GPT-3 law specialist.",
         image: Center(
           child: SvgPicture.asset(
             "assets/undraw_ai.svg",
