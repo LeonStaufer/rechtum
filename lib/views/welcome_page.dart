@@ -23,22 +23,29 @@ class WelcomePage extends StatelessWidget {
           next: const Icon(Icons.navigate_next),
           showDoneButton: false,
           color: Theme.of(context).primaryColor,
-          dotsDecorator: DotsDecorator(activeColor: Theme.of(context).primaryColor),
+          dotsDecorator:
+              DotsDecorator(activeColor: Theme.of(context).primaryColor),
         ),
       ),
     );
   }
 
   static PageViewModel landingIconPage() => PageViewModel(
-    title: "",
-    body: "",
-    image: Center(
-      child: Image.asset(
-        "assets/iconTransparent.png",
-        height: 160,
-      ),
-    ),
-  );
+        titleWidget: SizedBox(),
+        bodyWidget: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Image.asset(
+                "assets/iconTransparent.png",
+                height: 360,
+              ),
+              Text("RechTUM",
+                  style: TextStyle(fontSize: 48, fontWeight: FontWeight.bold)),
+            ],
+          ),
+        ),
+      );
 
   static PageViewModel landingPage() => PageViewModel(
         title: "Welcome to RechTUM!",
