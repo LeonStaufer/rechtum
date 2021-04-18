@@ -14,7 +14,7 @@ class HomePage extends StatelessWidget {
         height: 64,
         width: 64,
         child: FloatingActionButton(
-          child: Icon(Icons.chat_bubble_outline_rounded, size: 36),
+          child: Icon(Icons.question_answer_rounded, size: 36),
           onPressed: () => context.vRouter.push("/chat"),
           elevation: 12,
         ),

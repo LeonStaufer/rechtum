@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:rechtum/view_models/qa_question_view_model.dart';
 import 'package:rechtum/views/widgets.dart';
 import 'package:provider/provider.dart';
+import 'package:vrouter/vrouter.dart';
 
 class UniversityQuestionPage extends StatelessWidget {
   @override
@@ -11,6 +12,10 @@ class UniversityQuestionPage extends StatelessWidget {
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: FrostedGlassAppBar(title: "University Questions"),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () => context.vRouter.push("/chat"),
+        child: Text("?", style: TextStyle(fontSize: 28)),
+      ),
       body: Column(
         children: [
           SizedBox(height: 106),
